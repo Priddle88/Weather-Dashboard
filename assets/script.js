@@ -1,8 +1,10 @@
 
 
 var btn = document.querySelector("#btn");
+var cityH = document.querySelector(".city");
 var lat;
 var lon;
+var todayDate = moment().format("l");
 
 function submitIt(event) {
     event.preventDefault();
@@ -19,6 +21,7 @@ function submitIt(event) {
         lat = data[0].lat;
         lon = data[0].lon;
         todaysWeather(lat, lon);
+        degrees(lat ,lon)
     });
 
 }
@@ -26,14 +29,29 @@ function submitIt(event) {
 function todaysWeather(x, y) {
     console.log(x);
     var requestAgain = `https://api.openweathermap.org/data/2.5/weather?lat=${x}&lon=${y}&appid=28593a11400157b5c35ed2400db6eb16`;
-    
     fetch(requestAgain)
     .then(function(response) {
         return response.json()
     })
     .then(function(data) {
         console.log(data);
+        var cityName = data.name;
+        console.log(cityName);
+        console.log(todayDate);
+        console.log(`${cityName} (${todayDate})`);
+        cityH.textContent = (`${cityName} (${todayDate})`);
+        console.log(data.main.temp);
     });
+}
+
+function degrees(x, y) {
+    var requestAgain1 = `http://api.openweathermap.org/data/2.5/onecall?lat=${x}&lon=${y}&units=imperial&appid=28593a11400157b5c35ed2400db6eb16`;
+    fetch(requestAgain1)
+    .then(function(response) {
+        return response.json()
+    }) .then(function(data) {
+        console.log(data.current.temp);
+    })
 }
 
 btn.addEventListener("click", submitIt);
