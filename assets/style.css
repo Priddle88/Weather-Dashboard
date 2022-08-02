@@ -1,6 +1,7 @@
 body {
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,99,1) 0%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(13,9,121,1) 0%, rgba(0,212,255,1) 100%);
+    color: white;
 }
 
 header {
@@ -60,13 +61,13 @@ header {
 .ct {
     border: 2px solid black;
     height: 100px;
-    width: 80px;
+    width: 85px;
     margin-right: 10px;
 }
 
 .image {
     position: absolute;
-    right: 35px;
-    top: 108px;
+    right: 69px;
+    top: 161px;
     width: 288px;
 }

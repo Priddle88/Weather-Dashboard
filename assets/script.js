@@ -7,6 +7,7 @@ var windSpeed = document.querySelector(".windSpeed");
 var humidity = document.querySelector(".humidity");
 var uvIndex = document.querySelector(".uvIndex");
 var bigImage = document.createElement("img");
+var myId = "28593a11400157b5c35ed2400db6eb16";
 
 var lat;
 var lon;
@@ -15,7 +16,7 @@ var todayDate = moment().format("l");
 function submitIt(event) {
     event.preventDefault();
     var city = document.querySelector("#userInput").value;
-    var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=28593a11400157b5c35ed2400db6eb16`;
+    var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${myId}`;
     
     fetch(requestUrl)
     .then(function(response) {
@@ -75,6 +76,16 @@ function degrees(x, y) {
         bigImage.classList.add("image");
         uvIndex.appendChild(bigImage);
         
+    })
+}
+
+function fiveDay(x, y) {
+    var requestAgain2 = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}`;
+    fetch(requestAgain2)
+    .then(function(response) {
+        return response.json()
+    }) .then(function(data) {
+
     })
 }
 
