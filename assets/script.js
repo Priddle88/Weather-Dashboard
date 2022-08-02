@@ -1,7 +1,13 @@
 
-
+var oneDay = document.querySelector(".oneDay");
 var btn = document.querySelector("#btn");
 var cityH = document.querySelector(".city");
+var tempToday = document.querySelector(".temp");
+var windSpeed = document.querySelector(".windSpeed");
+var humidity = document.querySelector(".humidity");
+var uvIndex = document.querySelector(".uvIndex");
+var bigImage = document.createElement("img");
+
 var lat;
 var lon;
 var todayDate = moment().format("l");
@@ -50,7 +56,25 @@ function degrees(x, y) {
     .then(function(response) {
         return response.json()
     }) .then(function(data) {
+        console.log(data);
         console.log(data.current.temp);
+
+        var currentTemp = data.current.temp;
+        var wind = data.current.wind_speed;
+        var humid = data.current.humidity;
+        var uvI = data.current.uvi;
+        var iconPic = data.current.weather[0].icon;
+        console.log(iconPic);
+
+        tempToday.textContent = (`Temp: ${currentTemp} ℉`);
+        windSpeed.textContent = (`Wind: ${wind} MPH`);
+        humidity.textContent = (`Humidity: ${humid} %`);
+        uvIndex.textContent = (`UV Index: ${uvI}`);
+        oneDay.style.background = (`http://openweathermap.org/img/wn/${iconPic}@2x.png`);
+        bigImage.src = (`http://openweathermap.org/img/wn/${iconPic}@2x.png`);
+        bigImage.classList.add("image");
+        uvIndex.appendChild(bigImage);
+        
     })
 }
 
