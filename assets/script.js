@@ -194,32 +194,23 @@ function displayStorage() {
 
 function addListener() {
     
-    for (let i = 0; i < sbox2All.length; i++) {
+    for (let i = 0; i < sbox2All[0].children.length; i++) {
         // console.log(sbox2All[i].children[0]);
         // console.log("Hello");
         // console.log(sbox2All[i].children[i].value);
-        sbox2All[i].children[i].addEventListener("click", displayPrev)
+        sbox2All[0].children[i].addEventListener("click", displayPrev)
     }
 }
 
 function displayPrev(event) {
     event.preventDefault();
     console.clear();
+    addListener();
 
-    var pastCity = [];
-
-    for (let i = 0; i < sbox2All.length; i++) {
-        console.log(sbox2All[i].children[0]);
-        console.log("Hello");
-        console.log(sbox2All[i].children[i].value);
-        pastCity.push(sbox2All[i].children[i].value);
-        console.log(pastCity);
-        console.log("LOOK HERE!");
-    }
-
+    console.log(event.target.value);
     console.log("Hello World");
 
-    var requestUrl2 = `http://api.openweathermap.org/geo/1.0/direct?q=${pastCity}&limit=1&appid=${myId}`;
+    var requestUrl2 = `http://api.openweathermap.org/geo/1.0/direct?q=${event.target.value}&limit=1&appid=${myId}`;
     
     fetch(requestUrl2)
     .then(function(response) {
@@ -236,5 +227,4 @@ function displayPrev(event) {
 }
 
 hideBorders();
-
 btn.addEventListener("click", submitIt);

@@ -48,9 +48,9 @@ header {
 }
 
 .uvIndex {
-    width: 50px;
+    width: 117px;
+    text-align: center;
     color: black;
-    border: 2px solid black;
 }
 
 .fiveDay {
