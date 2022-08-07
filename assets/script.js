@@ -16,21 +16,19 @@ var lat;
 var lon;
 var todayDate = moment().format("l");
 
-
-
+// hides the borders of the 5 day forcast
 function hideBorders() {
-    
     for (let i = 0; i < content.length; i++) {
         content[i].style.display = "none";
-        
     }
 }
 
+//Submits the city from the user's input and starts the page
 function submitIt(event) {
     event.preventDefault();
     var city = document.querySelector("#userInput").value;
     var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${myId}`;
-    
+    //Gets the weather data of the city that the user inputs
     fetch(requestUrl)
     .then(function(response) {
         return response.json()
@@ -43,11 +41,11 @@ function submitIt(event) {
         todaysWeather(lat, lon);
         degrees(lat ,lon);
     });
-
+    //calls the function to input the city in local storage
     inputStorage(city);
-
 }
 
+//Function to ge the city name and date for today's weather
 function todaysWeather(x, y) {
     console.log(x);
     var requestAgain = `https://api.openweathermap.org/data/2.5/weather?lat=${x}&lon=${y}&appid=28593a11400157b5c35ed2400db6eb16`;
@@ -66,6 +64,7 @@ function todaysWeather(x, y) {
     });
 }
 
+//function to get the rest of the information I need for the 5 day forcast
 function degrees(x, y) {
     var requestAgain1 = `http://api.openweathermap.org/data/2.5/onecall?lat=${x}&lon=${y}&units=imperial&appid=28593a11400157b5c35ed2400db6eb16`;
     fetch(requestAgain1)
@@ -106,6 +105,7 @@ function degrees(x, y) {
     })
 }
 
+//function to get the dates the 5 day forcast
 function fiveDay(data) {
     var ct = document.querySelectorAll(".ct");
     var date1 = document.querySelector(".date1");
@@ -151,10 +151,11 @@ function fiveDay(data) {
     date4.textContent = day4;
     date5.textContent = day5;
 
-   
+   //Calls the pushTemps function
     pushTemps(data);
 }
 
+//Gets the rest of the data for the 5 day forcast and places it on the page
 function pushTemps(data) {
     var iconCt = document.querySelectorAll(".iconCt");
     var tempCt = document.querySelectorAll(".tempCt");
@@ -170,19 +171,20 @@ function pushTemps(data) {
         iconCt[i].src = (`http://openweathermap.org/img/wn/${littleIcons}@2x.png`);
         tempCt[i].textContent = `Temp: ${data.daily[i].temp.day}`;
         windCt[i].textContent = `Wind: ${data.daily[i].wind_speed} MPH`;
-        humCt[i].textContent = `Humidity: ${data.daily[i].wind_speed} %`;
+        humCt[i].textContent = `Humidity: ${data.daily[i].wind_speed}%`;
 
     }
 }
 
+//Function to input the city into local storage
 function inputStorage(city) {
     localStorage.setItem("City", city);
     displayStorage();
 }
 
+//Displays the city as a previous search underneath the input section
 function displayStorage() {
     var sbox2 = document.querySelector(".sbox2");
-    // var sbox2All = document.querySelectorAll(".sbox2");
     var cityList = document.createElement("button");
 
     cityList.textContent = localStorage.getItem("City");
@@ -192,8 +194,8 @@ function displayStorage() {
     addListener();
 }
 
+//Adds an event listener to the previous search options
 function addListener() {
-    
     for (let i = 0; i < sbox2All[0].children.length; i++) {
         // console.log(sbox2All[i].children[0]);
         // console.log("Hello");
@@ -202,6 +204,7 @@ function addListener() {
     }
 }
 
+//Function to display the previous search's data when clicked
 function displayPrev(event) {
     event.preventDefault();
     console.clear();
@@ -226,5 +229,6 @@ function displayPrev(event) {
     });
 }
 
+//calls the hideBorders function and adds an event listener to the search button
 hideBorders();
 btn.addEventListener("click", submitIt);
