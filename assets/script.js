@@ -90,6 +90,17 @@ function degrees(x, y) {
         bigImage.src = (`http://openweathermap.org/img/wn/${iconPic}@2x.png`);
         bigImage.classList.add("image");
         uvIndex.appendChild(bigImage);
+
+        if (uvI < 3) {
+            uvIndex.style.background = "green";
+        } else if (uvI < 6) {
+            uvIndex.style.background = "yellow";
+        } else if (uvI < 8) {
+            uvIndex.style.background = "orange";
+        } else {
+            uvIndex.style.background = "red";
+        }
+
         fiveDay(data);
         
     })

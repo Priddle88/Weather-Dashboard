@@ -26,7 +26,6 @@ header {
 .search h2 {
     text-align: left;
 }
-
 .sbox1 {
     border-bottom: 4px solid black;
 }
@@ -46,6 +45,12 @@ header {
     min-height: 235px;
     max-height: max-content;
     padding: 20px;
+}
+
+.uvIndex {
+    width: 50px;
+    color: black;
+    border: 2px solid black;
 }
 
 .fiveDay {
