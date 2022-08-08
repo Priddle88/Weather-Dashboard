@@ -16,4 +16,4 @@ I have not had much experience using API's before this assignment. To be honest,
 
 [Link to site here](https://priddle88.github.io/Weather-Dashboard/)
 
-![Image of Site](./images/Screen%20Shot%202022-08-07%20at%2011.31.41%20PM.png)
+![Image of Site](./images/Screen%20Shot%202022-08-07%20at%2011.49.01%20PM.png)
