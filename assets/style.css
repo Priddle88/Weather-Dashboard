@@ -24,7 +24,7 @@ header {
 }
 
 #userInput {
-    width: 100%;
+    width: 90%;
 }
 
 .search h2 {
@@ -88,7 +88,7 @@ header {
     text-align: center;
     top: -4px;
     position: relative;
-    margin: 8px;
+    margin: 9px;
 }
 
 .image {
