@@ -171,7 +171,7 @@ function pushTemps(data) {
         iconCt[i].src = (`https://openweathermap.org/img/wn/${littleIcons}@2x.png`);
         tempCt[i].textContent = `Temp: ${data.daily[i].temp.day}`;
         windCt[i].textContent = `Wind: ${data.daily[i].wind_speed} MPH`;
-        humCt[i].textContent = `Humidity: ${data.daily[i].wind_speed}%`;
+        humCt[i].textContent = `Humidity: ${data.daily[i].humidity}%`;
 
     }
 }
