@@ -82,6 +82,7 @@ header {
     max-width: max-content;
     margin-right: 2px;
     padding: 5px;
+    background-color: cornflowerblue;
 }
 
 .ct h4 {
