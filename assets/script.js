@@ -27,7 +27,7 @@ function hideBorders() {
 function submitIt(event) {
     event.preventDefault();
     var city = document.querySelector("#userInput").value;
-    var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${myId}`;
+    var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${myId}`;
     //Gets the weather data of the city that the user inputs
     fetch(requestUrl)
     .then(function(response) {
@@ -66,7 +66,7 @@ function todaysWeather(x, y) {
 
 //function to get the rest of the information I need for the 5 day forcast
 function degrees(x, y) {
-    var requestAgain1 = `http://api.openweathermap.org/data/2.5/onecall?lat=${x}&lon=${y}&units=imperial&appid=28593a11400157b5c35ed2400db6eb16`;
+    var requestAgain1 = `https://api.openweathermap.org/data/2.5/onecall?lat=${x}&lon=${y}&units=imperial&appid=28593a11400157b5c35ed2400db6eb16`;
     fetch(requestAgain1)
     .then(function(response) {
         return response.json()
@@ -85,8 +85,8 @@ function degrees(x, y) {
         windSpeed.textContent = (`Wind: ${wind} MPH`);
         humidity.textContent = (`Humidity: ${humid} %`);
         uvIndex.textContent = (`UV Index: ${uvI}`);
-        oneDay.style.background = (`http://openweathermap.org/img/wn/${iconPic}@2x.png`);
-        bigImage.src = (`http://openweathermap.org/img/wn/${iconPic}@2x.png`);
+        oneDay.style.background = (`https://openweathermap.org/img/wn/${iconPic}@2x.png`);
+        bigImage.src = (`https://openweathermap.org/img/wn/${iconPic}@2x.png`);
         bigImage.classList.add("image");
         uvIndex.appendChild(bigImage);
 
@@ -168,7 +168,7 @@ function pushTemps(data) {
     for(i = 0; i < tempCt.length; i++) {
         var littleIcons = data.daily[i].weather[0].icon;
 
-        iconCt[i].src = (`http://openweathermap.org/img/wn/${littleIcons}@2x.png`);
+        iconCt[i].src = (`https://openweathermap.org/img/wn/${littleIcons}@2x.png`);
         tempCt[i].textContent = `Temp: ${data.daily[i].temp.day}`;
         windCt[i].textContent = `Wind: ${data.daily[i].wind_speed} MPH`;
         humCt[i].textContent = `Humidity: ${data.daily[i].wind_speed}%`;
@@ -213,7 +213,7 @@ function displayPrev(event) {
     console.log(event.target.value);
     console.log("Hello World");
 
-    var requestUrl2 = `http://api.openweathermap.org/geo/1.0/direct?q=${event.target.value}&limit=1&appid=${myId}`;
+    var requestUrl2 = `https://api.openweathermap.org/geo/1.0/direct?q=${event.target.value}&limit=1&appid=${myId}`;
     
     fetch(requestUrl2)
     .then(function(response) {
