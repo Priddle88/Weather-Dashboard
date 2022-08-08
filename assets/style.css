@@ -58,6 +58,7 @@ header {
     width: 117px;
     text-align: center;
     color: black;
+    height: 24px;
 }
 
 .fiveDay {
@@ -98,4 +99,17 @@ header {
     right: 21px;
     top: 161px;
     width: 288px;
+}
+
+@media screen and (max-width: 620px) {
+    .image {
+        position: relative;
+        right: 21px;
+        top: -68px;
+        width: 288px;
+    }
+
+    .oneDay {
+        max-height: 400px;
+    }
 }

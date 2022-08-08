@@ -88,7 +88,7 @@ function degrees(x, y) {
         oneDay.style.background = (`https://openweathermap.org/img/wn/${iconPic}@2x.png`);
         bigImage.src = (`https://openweathermap.org/img/wn/${iconPic}@2x.png`);
         bigImage.classList.add("image");
-        uvIndex.appendChild(bigImage);
+        oneDay.appendChild(bigImage);
 
         if (uvI < 3) {
             uvIndex.style.background = "green";
