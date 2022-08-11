@@ -203,10 +203,8 @@ function displayStorage() {
 //Adds an event listener to the previous search options
 function addListener() {
     for (let i = 0; i < sbox2All[0].children.length; i++) {
-        // console.log(sbox2All[i].children[0]);
-        // console.log("Hello");
-        // console.log(sbox2All[i].children[i].value);
-        sbox2All[0].children[i].addEventListener("click", displayPrev)
+        sbox2All[0].children[i].addEventListener("click", displayPrev);
+        sbox2All[0].children[i].addEventListener("dblclick", removeBtn);
     }
 }
 
@@ -233,6 +231,7 @@ function displayPrev(event) {
         todaysWeather(lat, lon);
         degrees(lat ,lon);
     });
+    
 }
 //Displays the last searched city
 function displayLast() {
@@ -253,6 +252,11 @@ function displayLast() {
     });
     //calls the function to input the city in local storage
     inputStorage(pastCity);
+}
+
+function removeBtn(event) {
+    event.preventDefault();
+    event.target.remove();
 }
 
 //calls the hideBorders function and adds an event listener to the search button
