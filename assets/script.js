@@ -15,6 +15,7 @@ var myId = "28593a11400157b5c35ed2400db6eb16";
 var lat;
 var lon;
 var todayDate = moment().format("l");
+var cityArray = [];
 
 // hides the borders of the 5 day forcast
 function hideBorders() {
@@ -178,6 +179,11 @@ function pushTemps(data) {
 
 //Function to input the city into local storage
 function inputStorage(city) {
+    cityArray.push(city);
+    console.log("This is city array");
+    console.log(cityArray);
+    localStorage.setItem("CityArray", cityArray);
+
     localStorage.setItem("City", city);
     displayStorage();
 }
@@ -229,6 +235,27 @@ function displayPrev(event) {
     });
 }
 
+function displayLast() {
+    var pastCity = localStorage.getItem("City");
+    var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${pastCity}&limit=1&appid=${myId}`;
+    //Gets the weather data of the city that the user inputs
+    fetch(requestUrl)
+    .then(function(response) {
+        return response.json()
+    })
+    .then(function(data) {
+        console.log(data);
+        console.log(data[0].lat);
+        lat = data[0].lat;
+        lon = data[0].lon;
+        todaysWeather(lat, lon);
+        degrees(lat ,lon);
+    });
+    //calls the function to input the city in local storage
+    inputStorage(pastCity);
+}
+
 //calls the hideBorders function and adds an event listener to the search button
 hideBorders();
+displayLast();
 btn.addEventListener("click", submitIt);
