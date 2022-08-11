@@ -234,7 +234,7 @@ function displayPrev(event) {
         degrees(lat ,lon);
     });
 }
-
+//Displays the last searched city
 function displayLast() {
     var pastCity = localStorage.getItem("City");
     var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${pastCity}&limit=1&appid=${myId}`;
